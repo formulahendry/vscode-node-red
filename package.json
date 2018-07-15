@@ -6,7 +6,7 @@
     "publisher": "formulahendry",
     "icon": "logo.png",
     "engines": {
-        "vscode": "^1.20.0"
+        "vscode": "^1.23.0"
     },
     "categories": [
         "Other"

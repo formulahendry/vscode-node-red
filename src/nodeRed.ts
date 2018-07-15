@@ -17,10 +17,7 @@ export class NodeRed {
 
     public async open() {
         const webview = new NodeRedWebview(this.nodeRedServer.Port);
-        const previewUri: vscode.Uri = vscode.Uri.parse("extension-leaderboard://authority/show-extension-leaderboard");
-        vscode.workspace.registerTextDocumentContentProvider("extension-leaderboard", webview);
-        webview.update(previewUri);
-        vscode.commands.executeCommand("vscode.previewHtml", previewUri, vscode.ViewColumn.One, "Node-RED");
+        webview.show();
         AppInsightsClient.sendEvent("open");
     }
 }
