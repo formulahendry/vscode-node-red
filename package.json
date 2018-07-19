@@ -2,7 +2,7 @@
     "name": "vscode-node-red",
     "displayName": "Node-RED",
     "description": "Flow-based programming for IoT (Internet of Things)",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "formulahendry",
     "icon": "logo.png",
     "engines": {
@@ -33,19 +33,26 @@
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [
-            {
-                "command": "node-red.open",
-                "title": "Open",
-                "category": "Node-RED"
+        "commands": [{
+            "command": "node-red.open",
+            "title": "Open",
+            "category": "Node-RED"
+        }],
+        "keybindings": [{
+            "command": "node-red.open",
+            "key": "ctrl+alt+x"
+        }],
+        "configuration": {
+            "type": "object",
+            "title": "Node-RED",
+            "properties": {
+                "vscode-node-red.settings.js": {
+                    "type": "object",
+                    "default": {},
+                    "description": "Configuration of Node-RED, refer to https://nodered.org/docs/configuration"
+                }
             }
-        ],
-        "keybindings": [
-            {
-                "command": "node-red.open",
-                "key": "ctrl+alt+x"
-            }
-        ]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",

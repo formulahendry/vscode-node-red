@@ -10,9 +10,22 @@ To open Node-RED in VS Code:
 
 ![Node-RED](images/node-red.png)
 
+## Settings
+
+* `vscode-node-red.settings.js`: Configuration of Node-RED, refer to https://nodered.org/docs/configuration. e.g.
+```json
+"vscode-node-red.settings.js": {
+        "editorTheme": {
+            "projects": {
+                "enabled": true
+            }
+        }
+    }
+```
+
 ## Limitation
 
-Currently, when you switch between the editor tabs, the Node-RED editor will be reloaded due to [#16307](https://github.com/Microsoft/vscode/issues/16307). This issue would be resolved when the new VS Code [Webview API](https://code.visualstudio.com/updates/v1_21#_webview-api) is released.
+Currently, when you switch between the editor tabs, the Node-RED editor will be reloaded due to [#16307](https://github.com/Microsoft/vscode/issues/16307). This issue would be resolved when the new VS Code [Webview API supports localStorage](https://github.com/Microsoft/vscode/issues/52246) .
 
 ## Change Log
 

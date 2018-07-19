@@ -4,6 +4,7 @@ import * as getPort from "get-port";
 import * as http from "http";
 import * as RED from "node-red";
 import * as embeddedStart from "node-red-embedded-start";
+import * as vscode from "vscode";
 
 export class NodeRedServer {
     private isStarted = false;
@@ -30,11 +31,13 @@ export class NodeRedServer {
         const server = http.createServer(app);
 
         // Create the settings object - see default settings.js file for other options
-        const settings = {
+        const userSetteings = vscode.workspace.getConfiguration("vscode-node-red").get("settings.js");
+        let settings = {
             httpAdminRoot: "/red",
             httpNodeRoot: "/api",
             functionGlobalContext: {},    // enables global context
         };
+        settings = Object.assign(settings, userSetteings);
 
         // Initialise the runtime with a server and settings
         (RED as any).init(server, settings);
