@@ -15,12 +15,15 @@ export class NodeRed {
         await this.nodeRedServer.start();
     }
 
-    public async open() {
+    public async open(toSide: boolean) {
         const webview = new NodeRedWebview(this.nodeRedServer.Port);
         const previewUri: vscode.Uri = vscode.Uri.parse("extension-leaderboard://authority/show-extension-leaderboard");
         vscode.workspace.registerTextDocumentContentProvider("extension-leaderboard", webview);
         webview.update(previewUri);
-        vscode.commands.executeCommand("vscode.previewHtml", previewUri, vscode.ViewColumn.One, "Node-RED");
-        AppInsightsClient.sendEvent("open");
+        vscode.commands.executeCommand("vscode.previewHtml",
+            previewUri,
+            toSide ? vscode.ViewColumn.Two : vscode.ViewColumn.One,
+            "Node-RED");
+        AppInsightsClient.sendEvent("open", { toSide: toSide.toString() });
     }
 }

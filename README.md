@@ -10,6 +10,10 @@ To open Node-RED in VS Code:
 
 ![Node-RED](images/node-red.png)
 
+To open Node-RED to the side:
+  * use shortcut `Ctrl+Alt+Y`
+  * or press `F1`, then type `Node-RED: Open to the Side`
+
 ## Settings
 
 * `vscode-node-red.settings.js`: Configuration of Node-RED, refer to https://nodered.org/docs/configuration. e.g.
