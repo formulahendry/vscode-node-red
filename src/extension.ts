@@ -13,6 +13,10 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(vscode.commands.registerCommand("node-red.openToSide", () => {
         nodeRed.open(true);
     }));
+
+    context.subscriptions.push(vscode.commands.registerCommand("node-red.deploy", (fileUri: vscode.Uri) => {
+        nodeRed.deployFlow(fileUri);
+    }));
 }
 
 export function deactivate() {

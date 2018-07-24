@@ -29,26 +29,52 @@
     },
     "activationEvents": [
         "*",
-        "onCommand:node-red.open"
+        "onCommand:node-red.open",
+        "onCommand:node-red.deploy"
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [{
-            "command": "node-red.open",
-            "title": "Open",
-            "category": "Node-RED"
-        }, {
-            "command": "node-red.openToSide",
-            "title": "Open to the Side",
-            "category": "Node-RED"
-        }],
-        "keybindings": [{
-            "command": "node-red.open",
-            "key": "ctrl+alt+x"
-        }, {
-            "command": "node-red.openToSide",
-            "key": "ctrl+alt+y"
-        }],
+        "commands": [
+            {
+                "command": "node-red.open",
+                "title": "Open",
+                "category": "Node-RED"
+            },
+            {
+                "command": "node-red.openToSide",
+                "title": "Open to the Side",
+                "category": "Node-RED"
+            },
+            {
+                "command": "node-red.deploy",
+                "title": "Deploy Flow",
+                "category": "Node-RED"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "node-red.open",
+                "key": "ctrl+alt+x"
+            },
+            {
+                "command": "node-red.openToSide",
+                "key": "ctrl+alt+y"
+            },
+            {
+                "command": "node-red.deploy",
+                "title": "Deploy Flow",
+                "key": "ctrl+d"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "",
+                    "command": "node-red.deploy",
+                    "group": "navigation"
+                }
+            ]
+        },
         "configuration": {
             "type": "object",
             "title": "Node-RED",
@@ -83,6 +109,7 @@
         "express": "^4.16.3",
         "get-port": "^3.2.0",
         "node-red": "^0.18.4",
-        "node-red-embedded-start": "^1.0.1"
+        "node-red-embedded-start": "^1.0.1",
+        "request-promise": "^4.2.2"
     }
 }
