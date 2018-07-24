@@ -47,7 +47,7 @@
             },
             {
                 "command": "node-red.deploy",
-                "title": "Deploy Flow",
+                "title": "Deploy Node-RED Function",
                 "category": "Node-RED"
             }
         ],
@@ -62,7 +62,7 @@
             },
             {
                 "command": "node-red.deploy",
-                "title": "Deploy Flow",
+                "title": "Deploy Node-RED Function",
                 "key": "ctrl+d"
             }
         ],
@@ -96,19 +96,22 @@
     },
     "devDependencies": {
         "@types/express": "^4.11.1",
+        "@types/fs-extra": "^5.0.4",
         "@types/get-port": "^3.2.0",
         "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
         "@types/node-red": "^0.17.1",
+        "@types/request-promise": "^4.1.42",
         "tslint": "^5.8.0",
         "typescript": "^2.6.1",
-        "vscode": "^1.1.6"
+        "vscode": "^1.1.18"
     },
     "dependencies": {
         "applicationinsights": "^1.0.2",
         "express": "^4.16.3",
+        "fs-extra": "^7.0.0",
         "get-port": "^3.2.0",
-        "node-red": "^0.18.4",
+        "node-red": "^0.18.7",
         "node-red-embedded-start": "^1.0.1",
         "request-promise": "^4.2.2"
     }
