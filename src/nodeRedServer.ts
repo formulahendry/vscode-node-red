@@ -5,6 +5,7 @@ import * as http from "http";
 import * as RED from "node-red";
 import * as embeddedStart from "node-red-embedded-start";
 import * as vscode from "vscode";
+import { Utility } from "./utility";
 
 export class NodeRedServer {
     private isStarted = false;
@@ -31,16 +32,19 @@ export class NodeRedServer {
         const server = http.createServer(app);
 
         // Create the settings object - see default settings.js file for other options
-        const userSetteings = vscode.workspace.getConfiguration("vscode-node-red").get("settings.js");
+        const userSettings = vscode.workspace.getConfiguration("vscode-node-red").get("settings.js");
         let settings = {
             httpAdminRoot: "/red",
             httpNodeRoot: "/api",
+            vscodeInvokeRoot: "/vscode-invoke",
             functionGlobalContext: {},    // enables global context
         };
-        settings = Object.assign(settings, userSetteings);
+        settings = Object.assign(settings, userSettings);
 
-        // Initialise the runtime with a server and settings
+        // Initialize the runtime with a server and settings
         (RED as any).init(server, settings);
+
+        this.port = await getPort({ port: 10086 });
 
         // Serve the editor UI from /red
         app.use(settings.httpAdminRoot, (RED as any).httpAdmin);
@@ -48,7 +52,14 @@ export class NodeRedServer {
         // Serve the http nodes UI from /api
         app.use(settings.httpNodeRoot, (RED as any).httpNode);
 
-        this.port = await getPort({port: 8008});
+        // Listening for VS Code edit request from /vscode-invoke
+        app.use(settings.vscodeInvokeRoot, async (req, res) => {
+            res.end();
+            const flowId = req.query.flow;
+            const nodeId = req.query.node;
+            await Utility.openFunction(this.port, flowId, nodeId);
+        });
+
         server.listen(this.port);
         // tslint:disable-next-line:no-console
         console.log("port:" + this.port);
