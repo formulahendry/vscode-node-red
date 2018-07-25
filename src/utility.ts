@@ -21,7 +21,7 @@ export class Utility {
                 vscode.window.showWarningMessage(`Your function code has unsaved changes. \
                         Please close or save the file. Then try again.`);
             }
-            vscode.window.showTextDocument(document);
+            vscode.window.showTextDocument(document, vscode.ViewColumn.One);
         });
     }
 
