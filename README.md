@@ -1,6 +1,6 @@
 # Node-RED
 
-Flow-based programming for the Internet of Things. Use Node-RED inside your VS Code.
+Flow-based programming for the Internet of Things. Use Node-RED inside your VS Code. You could also connect to Node-RED on any IP-enabled device such as Raspberry Pi.
 
 ## Usage
 
@@ -16,6 +16,7 @@ To open Node-RED to the side:
 
 ## Settings
 
+* `vscode-node-red.url`: The url of Node-RED, e.g. `http://127.0.0.2:8008`. You could use this setting to connect to Node-RED on any IP-enabled device.
 * `vscode-node-red.settings.js`: Configuration of Node-RED, refer to https://nodered.org/docs/configuration. e.g.
 ```json
 "vscode-node-red.settings.js": {

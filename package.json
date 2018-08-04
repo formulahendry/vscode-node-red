@@ -2,7 +2,7 @@
     "name": "vscode-node-red",
     "displayName": "Node-RED",
     "description": "Flow-based programming for IoT (Internet of Things)",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "formulahendry",
     "icon": "logo.png",
     "engines": {
@@ -57,6 +57,11 @@
                     "type": "object",
                     "default": {},
                     "description": "Configuration of Node-RED, refer to https://nodered.org/docs/configuration"
+                },
+                "vscode-node-red.url": {
+                    "type": "string",
+                    "default": "",
+                    "description": "The url of Node-RED, e.g. `http://127.0.0.2:8008`"
                 }
             }
         }

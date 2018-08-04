@@ -1,3 +1,6 @@
+## 0.2.0 (2018-08-04)
+* Connect to Node-RED on any IP-enabled device
+
 ## 0.1.0 (2018-07-21)
 * Open Node-RED to the side
 
