@@ -87,7 +87,7 @@
         "applicationinsights": "^1.0.2",
         "express": "^4.16.3",
         "get-port": "^3.2.0",
-        "node-red": "^0.18.4",
+        "node-red": "^0.20.8",
         "node-red-embedded-start": "^1.0.1"
     }
 }
