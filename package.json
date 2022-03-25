@@ -78,7 +78,7 @@
         "@types/get-port": "^3.2.0",
         "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
-        "@types/node-red": "^0.17.1",
+        "@types/node-red": "^1.2.0",
         "tslint": "^5.8.0",
         "typescript": "^2.6.1",
         "vscode": "^1.1.6"
@@ -87,7 +87,7 @@
         "applicationinsights": "^1.0.2",
         "express": "^4.16.3",
         "get-port": "^3.2.0",
-        "node-red": "^0.18.4",
+        "node-red": "^2.0.6",
         "node-red-embedded-start": "^1.0.1"
     }
 }
