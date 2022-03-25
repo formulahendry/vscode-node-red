@@ -77,14 +77,14 @@
         "@types/express": "^4.11.1",
         "@types/get-port": "^3.2.0",
         "@types/mocha": "^2.2.42",
-        "@types/node": "^7.0.43",
+        "@types/node": "^17.0.23",
         "@types/node-red": "^1.2.0",
         "tslint": "^5.8.0",
         "typescript": "^3.9.10",
         "vscode": "^1.1.6"
     },
     "dependencies": {
-        "applicationinsights": "^1.0.2",
+        "applicationinsights": "^2.2.2",
         "express": "^4.16.3",
         "get-port": "^3.2.0",
         "node-red": "^2.0.6",
