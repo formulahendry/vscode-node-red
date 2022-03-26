@@ -5,6 +5,7 @@ import * as getPort from "get-port";
 import * as http from "http";
 import * as RED from "node-red";
 import * as embeddedStart from "node-red-embedded-start";
+import { resolve } from "path";
 import * as vscode from "vscode";
 
 export class NodeRedServer {
@@ -35,6 +36,7 @@ export class NodeRedServer {
         const userSettings = vscode.workspace.getConfiguration("vscode-node-red").get("settings.js");
 
         let settings: LocalSettings = {
+            userDir: resolve(__dirname, "..", ".node-red"),
             httpAdminRoot: "/red",
             httpNodeRoot: "/api",
             functionGlobalContext: {},    // enables global context
