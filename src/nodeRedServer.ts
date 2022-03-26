@@ -54,7 +54,7 @@ export class NodeRedServer {
         console.log("port:" + this.port);
 
         // Start the runtime
-        await (RED as any).start();
+        await RED.start();
         await embeddedStart(RED);
     }
 }
