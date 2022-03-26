@@ -6,6 +6,8 @@ import * as RED from "node-red";
 import * as embeddedStart from "node-red-embedded-start";
 import * as vscode from "vscode";
 
+const RED_HOME_KEY = "NODE_RED_HOME";
+
 export class NodeRedServer {
     private isStarted = false;
     private port;
@@ -54,7 +56,15 @@ export class NodeRedServer {
         console.log("port:" + this.port);
 
         // Start the runtime
+        let postProcessor = () => {};
+
+        if (!(RED_HOME_KEY in process.env)) {
+            process.env[RED_HOME_KEY] = "";
+            postProcessor = () => delete process.env[RED_HOME_KEY];
+        }
+
         await RED.start();
         await embeddedStart(RED);
+        postProcessor();
     }
 }
