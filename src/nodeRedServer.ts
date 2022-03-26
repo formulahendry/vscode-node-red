@@ -1,12 +1,11 @@
 "use strict";
+import { LocalSettings } from "@node-red/runtime";
 import * as express from "express";
 import * as getPort from "get-port";
 import * as http from "http";
 import * as RED from "node-red";
 import * as embeddedStart from "node-red-embedded-start";
 import * as vscode from "vscode";
-
-const RED_HOME_KEY = "NODE_RED_HOME";
 
 export class NodeRedServer {
     private isStarted = false;
@@ -34,21 +33,22 @@ export class NodeRedServer {
 
         // Create the settings object - see default settings.js file for other options
         const userSettings = vscode.workspace.getConfiguration("vscode-node-red").get("settings.js");
-        let settings = {
+
+        let settings: LocalSettings = {
             httpAdminRoot: "/red",
             httpNodeRoot: "/api",
             functionGlobalContext: {},    // enables global context
+            ...userSettings as any
         };
-        settings = Object.assign(settings, userSettings);
 
         // Initialise the runtime with a server and settings
-        RED.init(server, settings as any);
+        RED.init(server, settings);
 
         // Serve the editor UI from /red
-        app.use(settings.httpAdminRoot, RED.httpAdmin);
+        app.use(settings.httpAdminRoot as string, RED.httpAdmin);
 
         // Serve the http nodes UI from /api
-        app.use(settings.httpNodeRoot, RED.httpNode);
+        app.use(settings.httpNodeRoot as string, RED.httpNode);
 
         this.port = await getPort({port: 8008});
         server.listen(this.port);
@@ -56,15 +56,7 @@ export class NodeRedServer {
         console.log("port:" + this.port);
 
         // Start the runtime
-        let postProcessor = () => {};
-
-        if (!(RED_HOME_KEY in process.env)) {
-            process.env[RED_HOME_KEY] = "";
-            postProcessor = () => delete process.env[RED_HOME_KEY];
-        }
-
         await RED.start();
         await embeddedStart(RED);
-        postProcessor();
     }
 }
