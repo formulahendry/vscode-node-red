@@ -14,6 +14,9 @@ export function run(): Promise<void> {
         (resolve, reject) => {
             glob(
                 "**/*.test.js",
+                {
+                    cwd: __dirname
+                },
                 (error, matches) => {
                     if (error) {
                         reject(error);
