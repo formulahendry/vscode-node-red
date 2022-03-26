@@ -40,13 +40,13 @@ export class NodeRedServer {
         settings = Object.assign(settings, userSetteings);
 
         // Initialise the runtime with a server and settings
-        (RED as any).init(server, settings);
+        RED.init(server, settings as any);
 
         // Serve the editor UI from /red
-        app.use(settings.httpAdminRoot, (RED as any).httpAdmin);
+        app.use(settings.httpAdminRoot, RED.httpAdmin);
 
         // Serve the http nodes UI from /api
-        app.use(settings.httpNodeRoot, (RED as any).httpNode);
+        app.use(settings.httpNodeRoot, RED.httpNode);
 
         this.port = await getPort({port: 8008});
         server.listen(this.port);
