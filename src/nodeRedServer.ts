@@ -31,13 +31,13 @@ export class NodeRedServer {
         const server = http.createServer(app);
 
         // Create the settings object - see default settings.js file for other options
-        const userSetteings = vscode.workspace.getConfiguration("vscode-node-red").get("settings.js");
+        const userSettings = vscode.workspace.getConfiguration("vscode-node-red").get("settings.js");
         let settings = {
             httpAdminRoot: "/red",
             httpNodeRoot: "/api",
             functionGlobalContext: {},    // enables global context
         };
-        settings = Object.assign(settings, userSetteings);
+        settings = Object.assign(settings, userSettings);
 
         // Initialise the runtime with a server and settings
         RED.init(server, settings as any);
